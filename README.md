@@ -1,44 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React with TS
 
-## Available Scripts
+## 用tsx写一个React组件
 
-In the project directory, you can run:
+```tsx
+import React from "react";
 
-### `npm start`
+interface IHelloProps {
+  message?: string;
+}
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+// React.FC is an alias to React.FunctionComponent
+// use generics interface to describe props
+const Hello: React.FC<IHelloProps> = (props) => {
+  return <h2>{props.message}</h2>;
+};
+Hello.defaultProps = {
+  message: "Hello World",
+};
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+export default Hello;
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## React Hook
 
-### `npm run build`
+React 16.8 带来的全新特性，使用函数式组件代替 class 组件的写法。
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+没有破坏性改动
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- 完全可选
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 百分百向后兼容
 
-### `npm run eject`
+- 没有计划从React移除class
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+解决问题
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 组件很难复用状态逻辑
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 生命周期函数无法拆分
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+使用Hook完全拥抱函数
 
-## Learn More
+### Hook 是什么？
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+## 其他
+
+### npx是什么？
+
+- 直接运行包，避免全局安装模块
+- 运行node_modules下的包，如查看版本
+
