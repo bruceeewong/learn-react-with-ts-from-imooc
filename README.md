@@ -44,7 +44,87 @@ React 16.8 带来的全新特性，使用函数式组件代替 class 组件的�
 
 ### Hook 是什么？
 
+React16.8新提供的允许用户钩入react周期的函数。
 
+### State Hook
+
+`useState`接收state初始值，返回数组，包含state值与该state的setter
+
+```tsx
+import React, { useState } from "react";
+const LikeButton: React.FC = () => {
+  // 使用hook可以让函数组件也有state
+  // 使用state hook拆分逻辑
+  const [like, setLike] = useState(0);
+  const [on, setOn] = useState(true);
+  return (
+    <>
+      <button
+        onClick={() => {
+          setLike(like + 1);
+        }}
+      >
+        {like} Like
+      </button>
+      <button
+        onClick={() => {
+          setOn(!on);
+        }}
+      >
+        {on ? "ON" : "OFF"}
+      </button>
+    </>
+  );
+};
+
+export default LikeButton;
+```
+
+### Effect Hook
+
+#### 无需清除的Effect
+
+示例: 使用useEffect使用DOM完成标题更新
+
+如果使用class组件，写法需要在初始化和更新写重复的代码
+
+```tsx
+componentDidMount() {
+	document.title = `you clicked ${this.state.count} times`
+}
+componentDidUpdate() {
+	document.title = `you clicked ${this.state.count} times`
+}
+```
+
+使用 Effect Hook
+
+```tsx
+import {useEffect} from 'react'
+
+// ...
+// 第一次以及每次渲染后执行
+useEffect(() => {
+  document.title = `点击了${like}次`;
+});
+```
+
+#### 需要清除的Effect
+
+示例：完成一个鼠标跟踪器
+
+如果使用class组件，写法需要在初始化和更新写重复的代码
+
+```tsx
+componentDidMount() {
+	document.addEventListener('click', this.updateMouse)
+}
+componentDidUpdate() {
+	document.removeEventListener('click', this.updateMouse)
+}
+```
+
+使用 Effect Hook
 
 
 
