@@ -5,8 +5,9 @@ const LikeButton: React.FC = () => {
 
   // 第一次以及每次渲染后执行
   useEffect(() => {
+    console.log("run effect");
     document.title = `点击了${like}次`;
-  });
+  }, [like]); // 指明依赖
 
   return (
     <>

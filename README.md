@@ -126,7 +126,67 @@ componentDidUpdate() {
 
 使用 Effect Hook
 
+```tsx
+import React, { useState, useEffect } from "react";
 
+const MouseTracker: React.FC = () => {
+  const [positions, setPositions] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // 每次渲染都会调用
+    const updateMouse = (e: MouseEvent) => {
+      setPositions({ x: e.clientX, y: e.clientY });
+    };
+    document.addEventListener("click", updateMouse);
+
+    // 清除 effect 副作用,但没有控制运行次数
+    return () => {
+      document.removeEventListener("click", updateMouse);
+    };
+  });
+
+  return (
+    <p>
+      X: {positions.x}, Y: {positions.y}
+    </p>
+  );
+};
+
+export default MouseTracker;
+
+```
+
+#### 控制 useEffect 的执行
+
+useEffect 第二个参数为指明effect触发的依赖
+
+如果空数组，只会在组件开始和结束触发
+
+```tsx
+seEffect(() => {
+    const updateMouse = (e: MouseEvent) => {
+      setPositions({ x: e.clientX, y: e.clientY });
+    };
+    document.addEventListener("click", updateMouse);
+
+    return () => {
+      document.removeEventListener("click", updateMouse);
+    };
+  }, []);  // 只会在组件开始和结束触发
+```
+
+指明依赖，则对应的依赖变了才触发
+
+```tsx
+  const [like, setLike] = useState(0);
+  const [on, setOn] = useState(true);
+  
+  // 第一次以及每次渲染后执行
+  useEffect(() => {
+    console.log("run effect");
+    document.title = `点击了${like}次`;
+  }, [like]); // 指明依赖
+```
 
 ## 其他
 
