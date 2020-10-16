@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import Hello from "./components/Hello";
+import LikeButton from "./components/LikeButton";
 import "./App.css";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         >
           Learn React
         </a>
-        <Hello />
+        <LikeButton />
       </header>
     </div>
   );
