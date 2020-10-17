@@ -17,7 +17,7 @@ const MouseTracker: React.FC = () => {
       console.log("remove effect", positions.x);
       document.removeEventListener("click", updateMouse);
     };
-  }, []); // useEffect 第二个参数为指明依赖，如果空数组，只会在组件开始和结束触发
+  }, [positions]); // useEffect 第二个参数为指明依赖，如果空数组，只会在组件开始和结束触发
 
   return (
     <p>

@@ -1,10 +1,13 @@
 import React from "react";
 import logo from "./logo.svg";
-import LikeButton from "./components/LikeButton";
-// import MouseTracker from "./components/MouseTracker";
 import "./App.css";
+import LikeButton from "./components/LikeButton";
+import useMousePosition from "./hooks/useMousePosition";
+// import MouseTracker from "./components/MouseTracker";
 
 function App() {
+  const positions = useMousePosition();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +23,9 @@ function App() {
         >
           Learn React
         </a>
+        <p>
+          X: {positions.x}, Y: {positions.y}
+        </p>
         <LikeButton />
         {/* <MouseTracker /> */}
       </header>
