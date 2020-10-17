@@ -223,6 +223,15 @@ export default useMousePosition;
 
 在别的地方直接引入函数并使用，即可获取 position state 以及 执行 effect
 
+### 替代HOC
+
+HOC弊端：
+
+- 变量来源不清晰
+- 冗余节点
+
+
+
 ## 其他
 
 ### npx是什么？
