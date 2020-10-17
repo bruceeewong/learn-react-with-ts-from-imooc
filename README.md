@@ -247,6 +247,13 @@ HOC弊端：
 
 - 获取dom节点引用
 
+```
+const likeRef = useRef(0);
+likeRef.current++;
+```
+
+
+
 ## 其他
 
 ### npx是什么？
