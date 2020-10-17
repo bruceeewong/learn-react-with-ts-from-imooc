@@ -252,7 +252,21 @@ const likeRef = useRef(0);
 likeRef.current++;
 ```
 
+### useContext
 
+使用`React.createContext`创建上下文，使用`<Context.Provider>`包裹组件，再里面的任意组件中使用 `useContext(context)` 即可拿到值
+
+### HOOK规则
+
+- 只在最顶层使用HOOK
+
+- 只在React函数中调用HOOK
+
+### 其他HOOK
+
+- useReducer
+
+- useCallback
 
 ## 其他
 
